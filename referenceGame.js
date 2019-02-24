@@ -196,3 +196,59 @@ function hitBomb (player, bomb)
 //     { key: 'boom', frame: 2 },
 //     { key: 'boom', frame: 1 }
 // ];
+
+
+
+
+
+
+
+// 
+//
+// class PlatformerScene extends Phaser.Scene {
+//     constructor() {
+//         super({ key: 'PlatformerScene' })
+//         this.accumulator = 0;
+//         this.fps = 60;  // Physics checks 60 times/s
+//         this.physicsTimestep = 1000 / this.fps;
+//
+//         console.log("constructor");
+//     }
+//
+//     preload() {
+//         console.log("preload");
+//     }
+//
+//     create() {
+//         console.log("create");
+//     }
+//
+//     update(timestamp, elapsed) {
+//         console.log("update");
+//
+//         this.accumulator += elapsed;
+//         while (this.accumulator >= this.physicsTimestep) {
+//             this.accumulator -= this.physicsTimestep;
+//             this.physics.update(this.physicsTimestep);
+//         }
+//         this.render(timestamp, elapsed);
+//     }
+// }
+//
+//
+// var config = {
+//     type: Phaser.AUTO,
+//     width:  window.innerWidth,
+//     height: window.innerHeight,
+//     backgroundColor: '#000404',
+//     physics: {
+//         default: 'arcade',
+//         arcade: {
+//             gravity: { y: 300 },
+//             debug: false
+//         }
+//     },
+//     scene: PlatformerScene
+// }
+//
+// game = new Phaser.Game(config);
