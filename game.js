@@ -1,13 +1,13 @@
 var config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 1000,  // 1400
+    height: 600,  // 750
     physics: {
         default: 'arcade',
-        arcade: {
+        // arcade: {
         //     gravity: { y: 300 },
         //     debug: false
-        }
+        // }
     },
     scene: {
         preload: preload,
@@ -32,8 +32,10 @@ var game = new Phaser.Game(config);
 
 
 function preload () {
+    this.load.image('map', 'assets/Onett.gif');
     this.load.image('sky', 'assets/sky.png');
     this.load.image('ground', 'assets/platform.png');
+    this.load.image('ship', 'assets/jet2.gif');
     // this.load.image('star', 'assets/star.png');
     // this.load.image('bomb', 'assets/bomb.png');
     // this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
@@ -42,8 +44,14 @@ function preload () {
 }
 
 function create () {
-  //  A simple background for our game
-  this.add.image(400, 300, 'sky');
+
+  //
+  this.cameras.main.setBounds(0, 0, 1600, 1200);
+
+  //  Set background image
+  this.add.image(-100, -100, 'map').setOrigin(0).setScrollFactor(1);
+
+  ship = this.physics.add.image(150, 150, 'ship');
 
   //  The platforms group contains the ground and the 2 ledges we can jump on
   platforms = this.physics.add.staticGroup();
@@ -125,11 +133,11 @@ function update () {
 // Player movement
 
   if (cursors.left.isDown) {
-    player.setVelocityX(-160);
+    player.setVelocityX(-250);
     player.anims.play('moveLeft', true);
     standDirection = 0;
   } else if (cursors.right.isDown) {
-    player.setVelocityX(160);
+    player.setVelocityX(250);
     player.anims.play('moveRight', true);
     standDirection = 1;
   } else {
@@ -137,13 +145,13 @@ function update () {
   }
 
   if (cursors.up.isDown) {
-    player.setVelocityY(-160);
+    player.setVelocityY(-250);
     if (!cursors.left.isDown) {
       player.anims.play('moveRight', true);
       standDirection = 1;
     }
   } else if (cursors.down.isDown) {
-    player.setVelocityY(160);
+    player.setVelocityY(250);
     if (!cursors.right.isDown) {
       player.anims.play('moveLeft', true);
       standDirection = 0;
