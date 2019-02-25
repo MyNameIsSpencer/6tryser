@@ -21,7 +21,7 @@ var game = new Phaser.Game(config);
 function preload ()
 {
     this.load.image('map', 'assets/Onett.gif');
-    this.load.image('ship', 'assets/jet3.gif');
+    this.load.image('ship', 'assets/jet3.png');
 }
 
 function create ()
@@ -39,10 +39,6 @@ function create ()
     // this.cameras.main.roundPixels = true;
 
     this.cameras.main.setZoom(4);
-
-    // ship.scale.x = 5;
-    // ship.scale.y = 5;
-
 }
 
 function updateDirect ()

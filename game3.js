@@ -20,12 +20,12 @@ var config = {
 
 var player;
 var standDirection = 0;
-var stars;
+// var stars;
 // var bombs;
 // var platforms;
 var cursors;
-var score = 0;
-var gameOver = false;
+// var score = 0;
+// var gameOver = false;
 // var scoreText;
 
 
@@ -35,15 +35,22 @@ function preload () {
   this.load.image('map', 'assets/Onett.gif');
   this.load.image('sky', 'assets/sky.png');
   this.load.image('ground', 'assets/platform.png');
-  this.load.image('ship', 'assets/jet2.gif');
+  this.load.image('ship', 'assets/jet3.png');
   this.load.spritesheet('legi', 'assets/legi.png', { frameWidth: 30, frameHeight: 30, endFrame: 25 });
   this.load.spritesheet('basicGuy', 'assets/BasicGuy8080.png', { frameWidth: 80, frameHeight: 80, endFrame: 12 });
 }
 
 function create () {
+  this.cameras.main.setBounds(0, 0, 1600, 1200);
+
+  this.add.image(0, 0, 'map').setOrigin(0).setScrollFactor(1);
+
   cursors = this.input.keyboard.createCursorKeys();
 
   player = this.physics.add.sprite(100, 150, 'basicGuy');
+  ship = this.physics.add.image(400.5, 301.3, 'ship');
+  ship.setScale(0.3, 0.3);
+
 
   this.anims.create({
       key: 'moveLeft',
@@ -72,7 +79,6 @@ function create () {
   });
 
 
-  cursors = this.input.keyboard.createCursorKeys();
 
 
 
