@@ -47,9 +47,11 @@ function create () {
 
   cursors = this.input.keyboard.createCursorKeys();
 
-  player = this.physics.add.sprite(100, 150, 'basicGuy');
-  ship = this.physics.add.image(400.5, 301.3, 'ship');
+  player = this.physics.add.sprite(400, 400, 'basicGuy');
+  ship = this.physics.add.image(400, 300, 'ship');
   ship.setScale(0.3, 0.3);
+
+  this.cameras.main.startFollow(player, true, 0.09, 0.09);
 
 
   this.anims.create({
@@ -103,10 +105,14 @@ function update () {
     player.setVelocityX(-250);
     player.anims.play('moveLeft', true);
     standDirection = 0;
+    ship.setAngle(-90);
+    ship.x -= 2.5;
   } else if (cursors.right.isDown) {
     player.setVelocityX(250);
     player.anims.play('moveRight', true);
     standDirection = 1;
+    ship.setAngle(90);
+    ship.x += 2.5;
   } else {
     player.setVelocityX(0);
   }
@@ -117,12 +123,16 @@ function update () {
       player.anims.play('moveRight', true);
       standDirection = 1;
     }
+    ship.setAngle(0);
+    ship.y -= 2.5;
   } else if (cursors.down.isDown) {
     player.setVelocityY(250);
     if (!cursors.right.isDown) {
       player.anims.play('moveLeft', true);
       standDirection = 0;
     }
+    ship.setAngle(-180);
+    ship.y += 2.5;
   } else {
     player.setVelocityY(0);
     if (!cursors.left.isDown && !cursors.right.isDown) {
