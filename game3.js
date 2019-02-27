@@ -41,7 +41,7 @@ function preload () {
 }
 
 function create () {
-  this.cameras.main.setBounds(0, 0, 1600, 1200);
+  this.cameras.main.setBounds(0, 0, 4500, 3000);
 
   this.add.image(0, 0, 'map').setOrigin(0).setScrollFactor(1);
 
